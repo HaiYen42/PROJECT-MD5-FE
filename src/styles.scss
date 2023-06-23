@@ -1,4 +1,3 @@
-
 @use '@angular/material' as mat;
 @include mat.core();
 $MD5-FE-primary: mat.define-palette(mat.$indigo-palette);
@@ -12,25 +11,6 @@ $MD5-FE-theme: mat.define-light-theme((
   )
 ));
 @include mat.all-component-themes($MD5-FE-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-/**
-* Template Name: NiceAdmin
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # General
@@ -47,12 +27,11 @@ body {
 
 a {
   color: #4154f1;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover {
-  color: #717ff5;
-  text-decoration: none;
+  color: #1103d9;
 }
 
 h1,
@@ -174,7 +153,7 @@ h6 {
 }
 
 .dropdown-menu .dropdown-item:hover {
-  background-color: #f6f9ff;
+  background-color: #fff6f6;
 }
 
 @media (min-width: 768px) {
@@ -343,7 +322,7 @@ h6 {
 }
 
 .breadcrumb a:hover {
-  color: #51678f;
+  color: #005afc;
 }
 
 .breadcrumb .breadcrumb-item::before {
@@ -393,7 +372,6 @@ h6 {
 .logo img {
   max-height: 26px;
   margin-right: 6px;
-  width: 200px;
 }
 
 .logo span {
@@ -401,7 +379,6 @@ h6 {
   font-weight: 700;
   color: #012970;
   font-family: "Nunito", sans-serif;
-
 }
 
 .header {
@@ -409,9 +386,8 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  //background-color: #fff;
-  background-color: rgb(5,5,5);
-  padding:50px 20px;
+  background-color: #fff;
+  padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
 }
@@ -428,7 +404,7 @@ h6 {
   padding: 0 20px;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1199px) {
   .header .search-bar {
     position: fixed;
     top: 50px;
@@ -490,7 +466,7 @@ h6 {
   list-style: none;
 }
 
-.header-nav > ul {
+.header-nav>ul {
   margin: 0;
   padding: 0;
 }
@@ -507,9 +483,7 @@ h6 {
 }
 
 .header-nav .nav-profile img {
-  height: 33px;
-  width: 33px;
-
+  max-height: 36px;
 }
 
 .header-nav .nav-profile span {
@@ -664,7 +638,7 @@ h6 {
 
   #main,
   #footer {
-    margin-left: 0px;
+    margin-left: 300px;
   }
 }
 
@@ -683,28 +657,6 @@ h6 {
 
   .toggle-sidebar .sidebar {
     left: -300px;
-    display: none;
-
-  }
-}
-
-@media (max-width: 1199px) {
-  .toggle-sidebar .sidebar {
-    left: 0;
-  }
-}
-
-
-@media (min-width: 1200px) {
-
-  .toggle-sidebar #main,
-  .toggle-sidebar #footer {
-    margin-left: 0;
-  }
-
-  .toggle-sidebar .sidebar {
-    left: -300px;
-
   }
 }
 
@@ -722,7 +674,6 @@ h6 {
 
 .sidebar-nav .nav-item {
   margin-bottom: 5px;
-  padding-bottom: 100px ;
 }
 
 .sidebar-nav .nav-heading {
@@ -739,7 +690,6 @@ h6 {
   font-size: 15px;
   font-weight: 600;
   color: #4154f1;
-  //transition: 0.3;
   background: #f6f9ff;
   padding: 10px 15px;
   border-radius: 4px;
@@ -790,7 +740,6 @@ h6 {
   font-size: 14px;
   font-weight: 600;
   color: #012970;
-  //transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
 }
@@ -937,7 +886,7 @@ h6 {
 }
 
 /* News & Updates */
-.dashboard .news .post-item + .post-item {
+.dashboard .news .post-item+.post-item {
   margin-top: 15px;
 }
 
@@ -965,7 +914,7 @@ h6 {
 
 .dashboard .news p {
   font-size: 14px;
-  color: #777777;
+  color: #ec0d0d;
   margin-left: 95px;
 }
 
@@ -1285,7 +1234,6 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
-
 /*--------------------------------------------------------------
 # new Custom
 --------------------------------------------------------------*/
@@ -1300,3 +1248,15 @@ h6 {
 .login-register{
   display: flex;
 }
+.home-section {
+  position: relative;
+  background: #E4E9F7;
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+

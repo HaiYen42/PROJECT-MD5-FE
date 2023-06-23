@@ -39,8 +39,9 @@ export class RegisterComponent {
       } else if(data.message == 'no_email') {
         this.statusError = 'The email is existed! Please try again!'
       } else if(data.message == 'yes'){
-        this.status = "Create account success!"
-        this.router.navigate(['/login'])
+        // this.status = "Create account success!"
+        this.authService.setRegister(true);
+        this.router.navigate(['login'])
       }
     })
   }

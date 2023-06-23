@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
+      <mat-card style="margin: 0">
+        <mat-dialog-content class="mat-typography">
+        <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid&&updateFilm()" novalidate>
+          <mat-error class="alert alert-success">{{status}}</mat-error>
+<!--          Name-->
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label>Name:</mat-label>
+            <input name="name" #name="ngModel" [(ngModel)]="film.name" matInput placeholder="Name"
+                   value="{{film.name}}">
+            <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+            <br>
+<!--          Description-->
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label>Description:</mat-label>
+            <textarea name="description" #description="ngModel" [(ngModel)]="film.description" matInput
+                      placeholder="Description"
+                      value="{{film.description}}">
+            </textarea>
+            <mat-icon color="accent" matSuffix>description</mat-icon>
+          </mat-form-field>
+          <br>
+          <input value="{{film.category?.name}}" disabled> <br>
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label >Category {{film.category?.name}} (old) select new category?</mat-label>
+            <mat-select [(ngModel)]="film.category" name="category">
+              <mat-option *ngFor="let category of listCategory" [value]="category">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+            <br>
+          <input value="{{film.nation?.name}}" disabled> <br>
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label >Nation {{film.nation?.name}} (old) select new category?</mat-label>
+            <mat-select [(ngModel)]="film.nation" name="nation">
+              <mat-option *ngFor="let nation of listNation" [value]="nation">
+                {{nation.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!--          Avatar-->
+          <br>
+          <img src="{{film.avatar}}" width="50px" height="50px" alt="">
+          <br>
+          <app-upload-avatar (giveURLtoCreate)="onUploadAvatar($event)"></app-upload-avatar>
+          <br>
+<!--          Film-->
+          <video src="{{film.filmLink}}" autoplay controls></video>
+          <br>
+          <mat-label>Video</mat-label>
+          <mat-icon color="primary">video_library</mat-icon>
+          <app-upload-file (giveURLtoCreate)="onUploadFile($event)"></app-upload-file>
+          <button type="submit" mat-stroked-button color="accent"
+                  class="mat-button-toggle-group btn-outline-primary">Update Film
+            <mat-icon color="accent" matSuffix>update</mat-icon>
+          </button>
+          <br>
+          <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Render List After Close
+          </button>
+        </form>
+        </mat-dialog-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

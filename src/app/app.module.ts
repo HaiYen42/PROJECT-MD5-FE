@@ -37,6 +37,23 @@ import { AdminComponent } from './compoment/admin/admin/admin.component';
 import { Home2Component } from './compoment/pages/home2/home2.component';
 import { AdminIndexComponent } from './compoment/admin/admin-index/admin-index.component';
 import { SidebarComponent } from './compoment/admin/sidebar/sidebar.component';
+import { DeleteCategoryComponent } from './compoment/admin/category/delete-category/delete-category.component';
+import { PageFilmComponent } from './compoment/admin/film/page-film/page-film.component';
+import { CreateFilmComponent } from './compoment/admin/film/create-film/create-film.component';
+import {MatSelectModule} from "@angular/material/select";
+import { UploadFileComponent } from './compoment/upload/upload-file/upload-file.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { UpdateFilmComponent } from './compoment/admin/film/update-film/update-film.component';
+import { DeleteFilmComponent } from './compoment/admin/film/delete-film/delete-film.component';
+import { ListNationComponent } from './compoment/admin/nation/list-nation/list-nation.component';
+import { CreateNationComponent } from './compoment/admin/nation/create-nation/create-nation.component';
+import { UpdateNationComponent } from './compoment/admin/nation/update-nation/update-nation.component';
+import { DeleteNationComponent } from './compoment/admin/nation/delete-nation/delete-nation.component';
+import {CheckLoginGuard} from "./service/CheckLoginGuard";
+import {CheckAdminGuard} from "./service/CheckAdminGuard";
+import {PageUserFilmComponent} from "./compoment/pages/film-user/list-film/page-user-film.component";
+import { DetailFilmComponent } from './compoment/pages/film-user/detail-film/detail-film.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -60,6 +77,20 @@ import { SidebarComponent } from './compoment/admin/sidebar/sidebar.component';
     Home2Component,
     AdminIndexComponent,
     SidebarComponent,
+    DeleteCategoryComponent,
+    PageFilmComponent,
+    CreateFilmComponent,
+    UploadFileComponent,
+    UpdateFilmComponent,
+    DeleteFilmComponent,
+    ListNationComponent,
+    CreateNationComponent,
+    UpdateNationComponent,
+    DeleteNationComponent,
+    PageFilmComponent,
+    PageUserFilmComponent,
+    DetailFilmComponent,
+
   ],
   imports: [
     HttpClientModule,
@@ -77,10 +108,15 @@ import { SidebarComponent } from './compoment/admin/sidebar/sidebar.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatProgressSpinnerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule,
+    MatProgressBarModule,
+    MatButtonToggleModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    CheckLoginGuard,
+    CheckAdminGuard
   ],
   bootstrap: [AppComponent]
 })

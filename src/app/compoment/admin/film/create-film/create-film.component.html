@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
+      <mat-card style="margin: 0">
+        <!--        mat-dialog-content  để tạo cuộn roll-->
+        <mat-dialog-content class="mat-typography">
+          <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid&&createFilm()" novalidate>
+            <mat-error class="alert alert-primary">{{status}}</mat-error>
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Name:</mat-label>
+              <input name="name" #name="ngModel" [(ngModel)]="form.name" matInput placeholder="Name" required
+                     minlength="3" maxlength="50">
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+              <mat-error *ngIf="name.hasError('minlength')">The name must at least 3 character!</mat-error>
+            </mat-form-field>
+            <br>
+            <!--                    Description-->
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Description:</mat-label>
+              <textarea name="description" #description="ngModel" [(ngModel)]="form.description" matInput placeholder="Description"
+                        required>
+            </textarea>
+              <mat-icon color="accent" matSuffix>description</mat-icon>
+              <mat-error *ngIf="description.hasError('required')">The description is required!</mat-error>
+            </mat-form-field>
+            <br>
+            <!--       category   slect-->
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Category</mat-label>
+              <mat-select [(ngModel)]="form.category" name="category" [formControl]="validateCategory">
+                <mat-option *ngFor="let category of listCategory" [value]="category">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="validateCategory.hasError('required')">Please select one category</mat-error>
+            </mat-form-field>
+            <br>
+
+            <!--       nation   select-->
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Nation</mat-label>
+              <mat-select [(ngModel)]="form.nation" name="category" [formControl]="validateNation">
+                <mat-option *ngFor="let nation of listNation" [value]="nation">
+                  {{nation.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="validateCategory.hasError('required')">Please select one category</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-label>Avatar </mat-label> <mat-icon color="primary">image</mat-icon>
+            <app-upload-avatar (giveURLtoCreate)="onUploadAvatar($event)"></app-upload-avatar>
+            <br>
+            <mat-label>Video</mat-label> <mat-icon color="primary">video_library</mat-icon>
+            <app-upload-file (giveURLtoCreate)="onUploadFile($event)"></app-upload-file>
+            <button type="submit" mat-stroked-button color="accent"
+                    class="mat-button-toggle-group btn-outline-primary">Create Film
+              <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+            </button>
+            <button mat-stroked-button color="warn" mat-button [mat-dialog-close]="true" cdkFocusInitial>Render List After Close</button>
+          </form>
+        </mat-dialog-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

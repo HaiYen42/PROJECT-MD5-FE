@@ -1,8 +1,7 @@
-
 <div class="sidebar">
   <div class="logo-details">
     <i class='bx bxl-c-plus-plus icon'></i>
-    <div class="logo_name">CodingLab</div>
+    <div class="logo_name" style="font-style: italic">MePhim Gi</div>
     <i class='bx bx-menu' id="btn"></i>
   </div>
   <ul class="nav-list">
@@ -12,11 +11,11 @@
       <span class="tooltip">Search</span>
     </li>
     <li>
-      <a routerLink="category">
-        <i class='bx bx-grid-alt'></i>
-        <span class="links_name">Category</span>
+      <a routerLink="">
+        <i class='bx bx-home'></i>
+        <span class="links_name">Home</span>
       </a>
-      <span class="tooltip">Category</span>
+      <span class="tooltip">Home</span>
     </li>
     <li>
       <a href="#">
@@ -26,18 +25,26 @@
       <span class="tooltip">User</span>
     </li>
     <li>
-      <a href="#">
+      <a routerLink="film">
         <i class='bx bx-chat'></i>
-        <span class="links_name">Messages</span>
+        <span class="links_name">Film</span>
       </a>
-      <span class="tooltip">Messages</span>
+      <span class="tooltip">Film</span>
     </li>
     <li>
-      <a href="#">
-        <i class='bx bx-pie-chart-alt-2'></i>
-        <span class="links_name">Analytics</span>
+      <a routerLink="category">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Category</span>
       </a>
-      <span class="tooltip">Analytics</span>
+      <span class="tooltip">Category</span>
+    </li>
+
+    <li>
+      <a routerLink="nation">
+        <i class='bx bx-pie-chart-alt-2'></i>
+        <span class="links_name">Quốc gia</span>
+      </a>
+      <span class="tooltip">Quốc gia</span>
     </li>
     <li>
       <a href="#">
@@ -67,20 +74,17 @@
       </a>
       <span class="tooltip">Setting</span>
     </li>
-    <li class="profile">
+    <li class="profile" (click)="logOut()" style="cursor:pointer">
       <div class="profile-details">
-        <img src="profile.jpg" alt="profileImg">
-        <div class="name_job">
-          <div class="name">Prem Shahi</div>
-          <div class="job">Web designer</div>
+        <div class="name_job" style="margin: 10px 60px ">
+          <div class="name">LogOut</div>
         </div>
       </div>
-      <i class='bx bx-log-out' id="log_out"></i>
+      <i class='bx bx-log-out' id="log_out"  >
+      </i>
     </li>
   </ul>
 </div>
-<!--<section class="home-section">-->
-<!--  <div class="text">Dashboard</div>-->
-<!--</section>-->
+
 
 

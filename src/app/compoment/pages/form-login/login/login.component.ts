@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../../service/auth.service";
 import {TokenService} from "../../../../service/token.service";
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {SignInForm} from "../../../../model/SignInForm";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   hide = true;
   form:any = {};
   signInForm?: SignInForm;
@@ -43,5 +43,11 @@ export class LoginComponent {
 
       }
     })
+  }
+
+  ngOnInit(): void {
+    if (this.authService.getRegister()){
+      this.status = 'Register success !'
+    }
   }
 }

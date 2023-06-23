@@ -1,5 +1,6 @@
+
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-left: 130px">
     <div class="col-12" style="margin-top: 90px; margin-bottom: 20px">
       <mat-card style="margin: 0">
         <div class="col-12" style="margin-top: 0">
@@ -7,22 +8,6 @@
             Category
           </button>
         </div>
-        <!--        <table class="table">-->
-        <!--          <tr>-->
-        <!--            <th>STT</th>-->
-        <!--            <th>ID</th>-->
-        <!--            <th>NAME</th>-->
-        <!--            <th>AVATAR</th>-->
-        <!--          </tr>-->
-        <!--          <tr *ngFor="let ct of listCategory; let i = index">-->
-        <!--            <td>{{i + 1}}</td>-->
-        <!--            <td>{{ct.id}}</td>-->
-        <!--            <td>{{ct.name}}</td>-->
-        <!--            <td>-->
-        <!--              <img style="width: 50px; height: 50px;" src="{{ct.avatar}}">-->
-        <!--            </td>-->
-        <!--          </tr>-->
-        <!--        </table>-->
 
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
@@ -52,25 +37,23 @@
                 <img style="width: 50px; height: 50px;" src="{{element.avatar}}" alt="">
               </td>
             </ng-container>
-
-            <!-- Edit Column  -->
-            <!--            <ng-container matColumnDef="edit">-->
-            <!--              <th mat-header-cell *matHeaderCellDef> EDIT</th>-->
-            <!--              <td mat-cell *matCellDef="let element">-->
-            <!--                <button [routerLink]="['/update-category/',element.id]" mat-icon-button-->
-            <!--                        aria-label="Example icon button with a vertical three dot icon">-->
-            <!--                  <mat-icon color="primary">edit</mat-icon>-->
-            <!--                </button>-->
-            <!--              </td>-->
-            <!--            </ng-container>-->
-
-            <!-- Edit Column  cach 2 Daialog-->
             <ng-container matColumnDef="edit">
               <th mat-header-cell *matHeaderCellDef> EDIT</th>
               <td mat-cell *matCellDef="let element">
                 <button (click)="openDialogUpdate(element.id)" mat-icon-button
                         aria-label="Example icon button with a vertical three dot icon">
                   <mat-icon color="primary">edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <!-- Delete Column  -->
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> Delete</th>
+              <td mat-cell *matCellDef="let element">
+                <button (click)="openDialogDelete(element.id)" mat-icon-button
+                        aria-label="Example icon button with a vertical three dot icon">
+                  <mat-icon color="accent">delete</mat-icon>
                 </button>
               </td>
             </ng-container>
@@ -88,3 +71,4 @@
     </div>
   </div>
 </div>
+

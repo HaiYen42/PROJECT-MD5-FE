@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -7,10 +8,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SidebarComponent implements OnInit{
 
+
+  constructor(private router: Router) {
+  }
+
   ngOnInit(): void {
     openSideBar();
   }
 
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(["/"])
+  }
 }
 function openSideBar() {
   let sidebar = document.querySelector(".sidebar");

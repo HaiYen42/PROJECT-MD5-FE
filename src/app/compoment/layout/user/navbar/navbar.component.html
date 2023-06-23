@@ -1,7 +1,7 @@
-<header id="header" class="header .header.shadow fixed-top d-flex align-items-center">
+<header style="background-color: #0C0C0C;" id="header" class="header .header.shadow fixed-top d-flex align-items-center">
   <div class="d-flex align-items-center justify-content-between">
     <a routerLink="/" class="logo d-flex align-items-center text-decoration-none">
-      <img src="assets/img/logo-mephim.png" alt="" >
+      <img src="assets/img/logo-mephim.png" alt="">
     </a>
     <i class="bi bi-list toggle-sidebar-btn customMenuBtn"></i>
   </div><!-- End Logo -->
@@ -11,41 +11,35 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/" style="color: white">Home</a>
+          <li class="nav-item" style="color: white !important;">
+            <a class="nav-link active" aria-current="page" routerLink="/" style="color: white !important;">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="checkAdmin">
             <a class="nav-link active" aria-current="page" routerLink="admin" style="color: white">Admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Phim</a>
+            <a class="nav-link active" aria-current="page" routerLink="userFilm">Phim</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
               Thể loại
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"  >
+              <li *ngFor="let ct of listCategory">
+                <a class="dropdown-item" href="#">{{ct.name}}</a>
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
               Quốc gia
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+              <li *ngFor="let nation of listNation">
+                <a class="dropdown-item" href="#">{{nation.name}}</a>
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -220,10 +214,10 @@
       <!--            Start profile user-->
       <li *ngIf="checkLogin" class="nav-item dropdown pe-3 " style="margin-right: 5px">
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="{{avatar}}" alt="Profile" class="rounded-circle">
-          <span style="text-transform: capitalize " class="d-none d-md-block dropdown-toggle ps-2">{{name}}</span>
+          <img src="{{avatar}}" alt="Profile"  style="border-radius: 50%">
+          <span style="text-transform: capitalize; color: white "
+                class="d-none d-md-block dropdown-toggle ps-2">{{name}}</span>
         </a><!-- End Profile Iamge Icon -->
-
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
@@ -290,35 +284,32 @@
       <!--      End profile user-->
 
       <!-- Start Log in btn -->
-        <div *ngIf="!checkLogin" class="login-register">
-          <li  class="nav-item" style="margin-right: 30px">
-            <a routerLink="login">
-              <div>
-                <mat-icon>login</mat-icon>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item" style="margin-right: 30px">
-            <a routerLink="register">
-              <div>
-                <mat-icon>how_to_reg</mat-icon>
-              </div>
-            </a>
-          </li>
-        </div>
+      <div *ngIf="!checkLogin" class="login-register">
+        <li class="nav-item" style="margin-right: 30px">
+          <a routerLink="login">
+            <div>
+              <mat-icon>login</mat-icon>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px">
+          <a routerLink="register">
+            <div>
+              <mat-icon>how_to_reg</mat-icon>
+            </div>
+          </a>
+        </li>
+      </div>
 
       <!-- Start Register btn btn -->
 
-
       <!-- End Log in btn -->
-
     </ul>
   </nav><!-- End Icons Navigation -->
 
 </header><!-- End Header -->
 
-
- ======= Sidebar =======
+<!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar customMenu">
 
   <ul class="sidebar-nav" id="sidebar-nav">
@@ -326,7 +317,7 @@
     <li class="nav-item">
       <a class="nav-link " href="../../../../../index.html">
         <i class="bi bi-grid"></i>
-        <span style="color: black">Dashboard</span>
+        <span>Dashboard</span>
       </a>
     </li><!-- End Dashboard Nav -->
 
