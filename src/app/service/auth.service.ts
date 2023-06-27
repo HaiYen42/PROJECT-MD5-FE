@@ -14,13 +14,19 @@ export class AuthService {
   //API LOCAL
 private API_SIGNUP = environment.API_LOCAL+'signup';
 private API_SIGNIN = environment.API_LOCAL+'signin';
-private API_UPDATE_AVATAR = environment.API_LOCAL+'change-avatar'
+private API_UPDATE_AVATAR = environment.API_LOCAL+'change-avatar';
+private API_USER = environment.API_LOCAL + 'user';
 
   //API SERVER
   // private API_SIGNUP = environment.API_SERVER+'signup';
   // private API_SIGNIN = environment.API_SERVER+'signin';
   // private API_UPDATE_AVATAR = environment.API_LOCAL + 'change-avatar';
   constructor(private httpClient: HttpClient) { }
+
+
+  getListUser():Observable<any>{
+    return this.httpClient.get(this.API_USER)
+  }
   signUp(signUpForm: SignUpForm): Observable<any>{
     console.log('goi service --->', signUpForm)
     return this.httpClient.post<any>(this.API_SIGNUP, signUpForm);

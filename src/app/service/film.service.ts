@@ -31,4 +31,20 @@ export class FilmService {
     const params = request;
     return this.httpClient.get(this.API_FILM+'/page', {params})
   }
+  getFilmImg():Observable<any>{
+    return this.httpClient.get(this.API_FILM +'/filmImg')
+  }
+  getTopFilm():Observable<any>{
+    return this.httpClient.get(this.API_FILM+ '/views')
+  }
+  getFilmByCategoryId(id: number):Observable<any>{
+    return this.httpClient.get(this.API_FILM+'/category/'+ id)
+  }
+  getFilmByNationId(id: number):Observable<any>{
+    return this.httpClient.get(this.API_FILM +'/nation/'+ id)
+  }
+  getListSearch(searchValue:any):Observable<any>{
+    let params = {name:searchValue}
+    return this.httpClient.get(this.API_FILM +'/search',{params})
+  }
 }

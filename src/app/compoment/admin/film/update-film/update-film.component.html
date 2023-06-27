@@ -23,9 +23,10 @@
             <mat-icon color="accent" matSuffix>description</mat-icon>
           </mat-form-field>
           <br>
-          <input value="{{film.category?.name}}" disabled> <br>
+<!--          <mat-error class="alert alert-success" style="width: 350px; text-align: center" >Select new Category ?</mat-error>-->
+          <input placeholder="Select new Category ?" disabled> <br>
           <mat-form-field appearance="outline" style="width: 350px">
-            <mat-label >Category {{film.category?.name}} (old) select new category?</mat-label>
+            <mat-label > {{film.category?.name}} </mat-label>
             <mat-select [(ngModel)]="film.category" name="category">
               <mat-option *ngFor="let category of listCategory" [value]="category">
                 {{category.name}}
@@ -33,9 +34,9 @@
             </mat-select>
           </mat-form-field>
             <br>
-          <input value="{{film.nation?.name}}" disabled> <br>
+          <input placeholder="Select new Nation ?" disabled> <br>
           <mat-form-field appearance="outline" style="width: 350px">
-            <mat-label >Nation {{film.nation?.name}} (old) select new category?</mat-label>
+            <mat-label > {{film.nation?.name}}</mat-label>
             <mat-select [(ngModel)]="film.nation" name="nation">
               <mat-option *ngFor="let nation of listNation" [value]="nation">
                 {{nation.name}}

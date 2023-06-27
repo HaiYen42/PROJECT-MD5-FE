@@ -16,7 +16,7 @@ import {UpdateNationComponent} from "../update-nation/update-nation.component";
 export class ListNationComponent implements OnInit{
   // @ts-ignore
   listNation: Nation[];
-  displayedColumns: string[] = ['id', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['position','id', 'name', 'edit', 'delete'];
   dataSource?: any;
   constructor(private dialog: MatDialog,
               private nationService: NationService) {
@@ -24,7 +24,15 @@ export class ListNationComponent implements OnInit{
 
   openDialog() {
     const dialogRef = this.dialog.open(CreateNationComponent);
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result || result == undefined) {
+        this.nationService.getListNation().subscribe(data => {
+          this.listNation = data;
+          this.dataSource = new MatTableDataSource<Nation>(this.listNation);
+          this.dataSource.paginator = this.paginator;
+        })
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -42,6 +50,15 @@ export class ListNationComponent implements OnInit{
         dataKey: id
       }
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result || result == undefined) {
+        this.nationService.getListNation().subscribe(data => {
+          this.listNation = data;
+          this.dataSource = new MatTableDataSource<Nation>(this.listNation);
+          this.dataSource.paginator = this.paginator;
+        })
+      }
+    });
   }
 
   openDialogDelete(id: any) {
@@ -50,6 +67,19 @@ export class ListNationComponent implements OnInit{
         dataKey: id
       }
     });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result-->',result)
+      if(result){
+        this.nationService.deleteNation(id).subscribe(()=>{
+          this.nationService.getListNation().subscribe(data =>{
+            this.listNation = data;
+            this.dataSource = new MatTableDataSource<Nation>(this.listNation);
+            this.dataSource.paginator = this.paginator;
+          })
+        })
+      }
+    })
+
   }
 
   // @ts-ignore

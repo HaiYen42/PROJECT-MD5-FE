@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row" style="margin-left: 130px">
+    <div class="col-12" style="margin-top: 90px; margin-bottom: 20px">
+      <mat-card style="margin: 0">
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- STT Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No.</th>
+              <td mat-cell *matCellDef="let element; let i =index"> {{i + 1}} </td>
+            </ng-container>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID</th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> NAME</th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Avatar Column -->
+            <ng-container matColumnDef="avatar">
+              <th mat-header-cell *matHeaderCellDef> AVATAR</th>
+              <td mat-cell *matCellDef="let element">
+                <img style="width: 50px; height: 50px;" src="{{element.avatar}}" alt="">
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[3, 6, 9, 20, 90]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

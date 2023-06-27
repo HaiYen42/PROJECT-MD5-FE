@@ -4,13 +4,12 @@
   <div class="row">
     <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
       <mat-card style="margin: 0; " class="col-12 d-flex flex-row">
-
         <div class="container col-4" style="justify-content:flex-start">
           <div class="row">
             <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
               <mat-card style="margin: 0">
                 <img src="{{film.avatar}}">
-                <label>{{film.name}}</label>
+                <h5>{{film.name}}</h5>
               </mat-card>
             </div>
           </div>
@@ -21,13 +20,15 @@
             <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
               <mat-card style="margin: 0">
                 <div>
+                  <h2>{{film.name}}</h2>
+                </div>
+                <div>
                   {{film.description}}
                 </div>
               </mat-card>
             </div>
           </div>
         </div>
-
       </mat-card>
     </div>
   </div>
@@ -36,36 +37,34 @@
   <div class="row">
     <div class="col-12" style="margin-top: 70px; margin-bottom: 20px;">
       <mat-card style="margin: 0">
-        <h5>
+        <h2>
           <mat-icon color="accent">movie</mat-icon>
           Xem phim
-        </h5>
+        </h2>
         <div class="videoFilm" style="  display: block; margin-left: auto; margin-right: auto;">
           <video src="{{film.filmLink}}" autoplay controls width="700" height="400"></video>
           <br>
           <div style="display:flex;">
             <div style="display: flex">
               <div>
-<!--                <form #f="ngForm" (ngSubmit)="f.form.valid &&like()" novalidate>-->
-                <button mat-icon-button [ngClass]="{'test': newColor}" (click)="like()"  >
-                  <mat-icon >favorite</mat-icon>
+                <button mat-icon-button [ngClass]="{'test': newColor}" (click)="like()">
+                  <mat-icon>favorite</mat-icon>
                 </button>
-<!--                </form>-->
               </div>
               <div style="margin-left: 10px;font-size: larger;margin-top: 10px ">
                 {{this.film.likeList?.length}}
-                {{status}}
               </div>
             </div>
             <div style="display: flex; margin-left: 50%">
               <div>
-                  <mat-icon color="primary" style="font-size: x-large; margin-top: 5px">visibility</mat-icon>
+                <mat-icon color="primary" style="font-size: x-large; margin-top: 5px">visibility</mat-icon>
               </div>
               <div style="margin:4px 10px">
                 {{this.film.view}}
               </div>
             </div>
           </div>
+          <mat-error class="alert-primary">{{status}}</mat-error>
         </div>
       </mat-card>
     </div>
@@ -76,21 +75,24 @@
     <div class="col-12" style="margin-top: 0px; margin-bottom: 10px">
       <mat-card>
         <div class="container justify-content-center mt-5 border-left border-right">
-          <div class="d-flex justify-content-center pt-3 pb-2"><input style="width: 60%" type="text" name="text"
-                                                                      placeholder="+ Add your comment"
-                                                                      class="form-control addtxt"></div>
-          <mat-icon color="primary" style="margin-left: 78%; cursor: pointer ">send</mat-icon>
-          <div class="d-flex justify-content-center py-2" *ngFor="let comment of commentList">
-            <div class="second py-2 px-2"><span class="text1">{{comment.content}}</span>
+          <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid &&getComment()" novalidate>
+            <mat-error class="alert-primary">{{statusComment}}</mat-error>
+            <div class="d-flex justify-content-center pt-3 pb-2">
+              <input style="width: 60%" type="text" name="content" [(ngModel)]="form.content"
+                     placeholder="+ Add your comment" class="form-control addtxt">
+            </div>
+          </form>
+          <div class="d-flex justify-content-center py-2" *ngFor="let ctm of film.commentList">
+            <div class="second py-2 px-2"><span class="text1">{{ctm.content}}</span>
               <div class="d-flex justify-content-between py-1 pt-2">
-                <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span
-                  class="text2">{{comment.user?.name}}</span></div>
+                <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18">
+                  <span class="text2">{{ctm.user?.name}}</span></div>
               </div>
             </div>
           </div>
         </div>
       </mat-card>
-<!--  Phân trang-->
+      <!--  Phân trang-->
     </div>
   </div>
 </div>

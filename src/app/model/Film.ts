@@ -1,6 +1,7 @@
 import {Category} from "./Category";
 import {Nation} from "./Nation";
 import {SignUpForm} from "./SignUpForm";
+import {CommentDTO} from "./CommentDTO";
 
 export class Film {
   public id?: number;
@@ -12,7 +13,7 @@ export class Film {
   public nation?: Nation;
   public user?: SignUpForm;
   public likeList?:[];
-  public commentList?:[];
+  public commentList?: CommentDTO[] ;
   public view?:number;
 
   constructor(name: string, avatar: string, description: string, filmLink: string, category: Category, nation: Nation,) {

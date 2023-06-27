@@ -24,8 +24,8 @@ export class CreateNationComponent {
       console.log('data-->'+ data.message)
       if (data.message=='name_existed'){
         this.status = 'The name is existed, try again !!!'
-      } else if(data.message=='success'){
-        this.status = 'Create Success'
+      } else if(data.message=='create_success'){
+        this.status = 'Create Success !'
       }
     })
   }

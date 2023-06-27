@@ -1,1 +1,22 @@
-<p>delete-nation works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
+      <mat-card style="margin: 0">
+        <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid" novalidate>
+          <mat-error class="alert alert-primary">{{status}}</mat-error>
+          <mat-form-field appearance="outline" style="width: 350px">
+            <mat-label>Name:</mat-label>
+            <input name="name" [(ngModel)]="nation.name" matInput placeholder="Name" required
+                   value="{{nation.name}}">
+            <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+          <br>
+          <button mat-stroked-button color="primary" mat-button [mat-dialog-close]="false" cdkFocusInitial>No</button>
+          <button mat-stroked-button color="warn" mat-button [mat-dialog-close]="true"
+                  cdkFocusInitial>Yes
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

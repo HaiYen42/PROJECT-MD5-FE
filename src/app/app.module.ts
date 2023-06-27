@@ -54,6 +54,7 @@ import {CheckAdminGuard} from "./service/CheckAdminGuard";
 import {PageUserFilmComponent} from "./compoment/pages/film-user/list-film/page-user-film.component";
 import { DetailFilmComponent } from './compoment/pages/film-user/detail-film/detail-film.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { ListUserComponent } from './compoment/admin/user/list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     PageFilmComponent,
     PageUserFilmComponent,
     DetailFilmComponent,
+    ListUserComponent,
 
   ],
   imports: [

@@ -18,6 +18,7 @@ import {CheckAdminGuard} from "./service/CheckAdminGuard";
 import {PageFilmComponent} from "./compoment/admin/film/page-film/page-film.component";
 import {PageUserFilmComponent} from "./compoment/pages/film-user/list-film/page-user-film.component";
 import {DetailFilmComponent} from "./compoment/pages/film-user/detail-film/detail-film.component";
+import {ListUserComponent} from "./compoment/admin/user/list-user/list-user.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, children:[
@@ -36,7 +37,8 @@ const routes: Routes = [
       {path: '', component: AdminIndexComponent,  canActivate:[CheckAdminGuard]},
       {path: 'category', component: ListCategoryComponent,  canActivate:[CheckAdminGuard]},
       {path: 'film', component: PageFilmComponent,  canActivate:[CheckAdminGuard]},
-      {path: 'nation', component: ListNationComponent,  canActivate:[CheckAdminGuard]}
+      {path: 'nation', component: ListNationComponent,  canActivate:[CheckAdminGuard]},
+      {path: 'user', component: ListUserComponent,  canActivate:[CheckAdminGuard]}
     ]}
   // {path: 'update-category/:id', component: UpdateCategoryComponent},
 ];

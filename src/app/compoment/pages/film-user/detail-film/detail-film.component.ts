@@ -11,69 +11,96 @@ import {TokenService} from "../../../../service/token.service";
 import {SignUpForm} from "../../../../model/SignUpForm";
 import {LikeService} from "../../../../service/like.service";
 import {Like} from "../../../../model/Like";
+import {CommentService} from "../../../../service/comment.service";
+import {get} from "@angular/fire/database";
 
 @Component({
   selector: 'app-detail-film',
   templateUrl: './detail-film.component.html',
   styleUrls: ['./detail-film.component.scss']
 })
-export class DetailFilmComponent implements OnInit{
+export class DetailFilmComponent implements OnInit {
   // @ts-ignore
   film = new Film();
-  commentList ?: CommentDTO[];
   form: any = {};
   // @ts-ignore
-  likes?:Like;
+  likes?: Like;
   // @ts-ignore
-  status = ''
+  status = '';
+  statusComment = '';
+  newComment?: CommentDTO;
+
   constructor(private filmService: FilmService,
               private avtRoute: ActivatedRoute,
               private likeService: LikeService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private commentService: CommentService) {
   }
 
   ngOnInit(): void {
-    this.avtRoute.paramMap.subscribe(idDetail=>{
+    this.avtRoute.paramMap.subscribe(idDetail => {
       // @ts-ignore
       const id = +idDetail.get('id');
-      console.log('idDetail-->', id)
-      this.filmService.getFilmById(id).subscribe(data=>{
+      // console.log('idDetail-->', id)
+      this.filmService.getFilmById(id).subscribe(data => {
         this.film = data;
         console.log('film--->', this.film)
-        this.commentList = this.film.commentList;
-        console.log('commentList--->',this.commentList);
       })
     })
+  }
 
+  getComment() {
+    this.newComment = new CommentDTO(
+      this.form.content,
+      {id:this.film.user?.id},
+      {id:this.film.id}
+    )
+    console.log('newComment--->',this.newComment);
+    if (!this.tokenService.getToken()) {
+      this.statusComment = 'Vui lòng đăng nhập để comment'
+    }else{
+      this.commentService.commentService(this.newComment).subscribe(data=>{
+        console.log('dataComment--->', data)
+        if (data.message='comment_ok'){
+          this.statusComment='Bạn đã comment thành công';
+          this.form.content ='';
+          // @ts-ignore
+          this.filmService.getFilmById(this.film.id).subscribe(data => {
+            this.film = data;
+            console.log('dataFilm-->', data)
+          })
+        }
+      })
+    }
   }
 
   newColor = false;
+
   toggleColor() {
     this.newColor = !this.newColor;
-    console.log('newColor == ',this.newColor)
+    console.log('newColor == ', this.newColor)
   }
-
 
   like() {
     this.toggleColor()
     this.likes = new Like(
-      {id:this.film.user?.id},
-    {id: this.film.id}
+      {id: this.film.user?.id},
+      {id: this.film.id}
     )
-    if (!this.tokenService.getToken()){
+    if (!this.tokenService.getToken()) {
       this.status = 'Vui lòng đăng nhập để like bộ phim này'
     } else {
-      this.likeService.likeService(this.likes).subscribe(data=>{
+      this.likeService.likeService(this.likes).subscribe(data => {
         console.log('dataLike--->', data)
-        console.log('mess-->',data.message)
-        if (data.message=='unlike_ok'){
-          this.status= 'Bạn đã unlike bộ phim'
+        console.log('mess-->', data.message)
+        if (data.message == 'unlike_ok') {
+          this.status = 'Bạn đã unlike bộ phim'
         }
-        if (data.message=='like_ok'){
+        if (data.message == 'like_ok') {
           this.status = 'Bạn đã like bộ phim'
         }
         // @ts-ignore
-        this.filmService.getFilmById(this.film.id).subscribe(data=>{
+        this.filmService.getFilmById(this.film.id).subscribe(data => {
           this.film = data;
           console.log('dataFilm-->', data)
         })
@@ -81,6 +108,8 @@ export class DetailFilmComponent implements OnInit{
     }
     // @ts-ignore
   }
+
+  protected readonly get = get;
 }
 
 

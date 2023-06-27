@@ -1,6 +1,4 @@
 <div class="home-component">
-  <h1> Home Component</h1>
-
   <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -9,31 +7,13 @@
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
+      <div class="carousel-item active" data-bs-interval="3000" *ngFor="let avt of listAvatar">
         <img class="img-carosel"
-             src="https://firebasestorage.googleapis.com/v0/b/module4-8223f.appspot.com/o/0cg78l5eajum?alt=media&token=e6aa7840-cbe5-4e64-8948-b3ee5efd6f46"
+             src="{{avt}}"
              alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
           <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="1000">
-        <img class="img-carosel"
-             src="https://firebasestorage.googleapis.com/v0/b/module4-8223f.appspot.com/o/1pjfdquubgv?alt=media&token=b6102f3d-2efe-4f61-b25c-1d33d189a5d1"
-             alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="img-carosel"
-             src="https://firebasestorage.googleapis.com/v0/b/module4-8223f.appspot.com/o/5t3eiuu4zsu?alt=media&token=2ca66448-f508-4683-827e-2f8174a6558d"
-             alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
         </div>
       </div>
     </div>
@@ -58,8 +38,21 @@
           <div class="row">
             <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
               <mat-card style="margin: 0">
-                aaaaaaaaaaaaaaaaaa
-
+<!--                <div class="d-flex flex-row gap-3">-->
+<!--                  <label>Thể loại: </label>-->
+<!--                  <a (click)="getListFilmByCategoryId(ct.id)" *ngFor="let ct of listCategory" style="cursor: pointer">-->
+<!--                     {{ct.name}}-->
+<!--                  </a>-->
+<!--                </div>-->
+                <div class="col-12 d-flex flex-row flex-wrap">
+                  <div class="col-4 col-lg-4" *ngFor="let vd of renderList" style="text-align: center">
+                    <div routerLink="/detailFilm/{{vd.id}}" style="cursor: pointer" >
+                      <img src="{{vd.avatar}}" alt="" style="height: 150px; width: 80%">
+                      <h4>{{vd.name}}</h4>
+                      <div>Views: {{vd.view}} - Nation: {{vd.nation?.name}}</div>
+                    </div>
+                  </div>
+                </div>
               </mat-card>
             </div>
           </div>
@@ -69,8 +62,20 @@
           <div class="row">
             <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
               <mat-card style="margin: 0">
-              bbbbbbbbbbbb
-
+                <mat-error class="alert alert-success" style="text-align: center; font-size: larger">Xem gì hôm nay
+                </mat-error>
+                <div *ngFor="let film of listTopFilm">
+                  <a routerLink="/detailFilm/{{film.id}}">
+                    <img src="{{film.avatar}}" width="300px" height="180px" style="margin-bottom: 20px">
+                    <h5>{{film.name}}</h5>
+                    <div style="display: flex">
+                      <div style="margin-right: 10px">
+                        <mat-icon color="primary">visibility</mat-icon>
+                      </div>
+                      <div>{{film.view}}</div>
+                    </div>
+                  </a>
+                </div>
               </mat-card>
             </div>
           </div>
@@ -79,5 +84,5 @@
     </div>
   </div>
 </div>
-ngFe
+
 

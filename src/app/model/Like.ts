@@ -1,7 +1,7 @@
 
 export class Like {
 public user :{};
-public film: {  };
+public film: { };
 
 
   constructor(user: {}, film: {}) {

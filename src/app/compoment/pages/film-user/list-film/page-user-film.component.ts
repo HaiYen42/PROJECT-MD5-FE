@@ -55,4 +55,8 @@ export class PageUserFilmComponent implements OnInit {
 
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  addPlaylist() {
+    console.log('addpl')
+  }
 }

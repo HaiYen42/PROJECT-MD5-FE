@@ -4,24 +4,25 @@
       <mat-card style="margin: 0">
         <div class="row">
           <div class="column" *ngFor="let film of listFilm">
-
             <a routerLink="/detailFilm/{{film.id}}" style="cursor: pointer">
               <div class="card">
                 <img src="{{film.avatar}}" height="250px">
                 <label>{{film.name}}</label>
                 <div style="display: flex">
-                  <div>
-                    <mat-icon color="primary">visibility</mat-icon>
+                  <div style="display: flex">
+                    <div>
+                      <mat-icon color="primary">visibility</mat-icon>
+                    </div>
+                    <div style="margin-left: 10px">{{this.film.view}}</div>
                   </div>
-                  <div style="margin-left: 10px">{{this.film.view}}</div>
-                </div>
-                <div style="display: flex">
-                  <div>
-                    <mat-icon color="accent">thumb_up</mat-icon>
+                  <div style="display: flex; margin-left: 170px">
+                    <div>
+                      <mat-icon color="accent">thumb_up</mat-icon>
+                    </div>
+                    <div style="margin-left: 10px">{{this.film.likeList?.length}}</div>
                   </div>
-                  <div style="margin-left: 10px">{{this.film.likeList?.length}}</div>
-                </div>
 
+                </div>
               </div>
             </a>
           </div>
@@ -32,7 +33,6 @@
                      [pageSizeOptions]="[4, 8, 12, 16, 20, 24, 80]"
                      aria-label="Select page">
       </mat-paginator>
-
     </div>
   </div>
 </div>

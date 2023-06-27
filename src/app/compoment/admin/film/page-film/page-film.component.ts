@@ -18,7 +18,7 @@ export class PageFilmComponent implements OnInit {
   checkUserLogin = false;
   // @ts-ignore
   listFilm: Film[];
-  displayedColumns: string[] = ['id', 'name', 'avatar', 'edit', 'delete'];
+  displayedColumns: string[] = ['position','id', 'name', 'avatar', 'edit', 'delete'];
   dataSource?: any;
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
