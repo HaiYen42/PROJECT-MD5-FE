@@ -101,7 +101,7 @@ export class UpdateFilmComponent {
 
   onUploadAvatar($event: string) {
     this.film.avatar = $event;
-    console.log('this.fimm.avatar -->', this.film.avatar)
+    console.log('this.film.avatar -->', this.film.avatar)
   }
   onUploadFile($event: string) {
     this.film.filmLink = $event;

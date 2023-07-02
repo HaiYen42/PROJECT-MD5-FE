@@ -26,11 +26,11 @@ export class UpdateCategoryComponent implements OnInit {
     this.categoryService.updateCategory(this.category?.id, this.category).subscribe(data =>{
       console.log('data UPDATE ========================>', data)
       if(data.message=='no_change'){
-        this.status = 'MÀY VÀO ĐÂY VỚI MỤC ĐÍCH GÌ???'
+        this.status = 'No Change, Try Again !'
       } else if(data.message == 'name_existed'){
-        this.status ='TÊN CATEGORY ĐANG BỊ TRÙNG'
+        this.status ='Name Existed, Try Again !'
       } else if(data.message == 'update_success'){
-        this.status = 'SỬA THÀNH CÔNG!!!'
+        this.status = 'Update Success !'
       }
     })
   }
