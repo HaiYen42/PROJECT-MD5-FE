@@ -25,7 +25,7 @@ export class UpdateFilmComponent {
   // validateNation = new FormControl('', [
   //   Validators.required
   // ])
-  listCategory: Category[] = [];
+  categoryList: Category[] = [];
   listNation: Nation[] = [];
 
   selectedValue?: string;
@@ -44,8 +44,8 @@ export class UpdateFilmComponent {
       console.log('Film edit -------------------- --->', this.film)
     })
     this.categoryService.getListCategory().subscribe(data => {
-      this.listCategory = data;
-      console.log('listcategory--->', this.listCategory)
+      this.categoryList = data;
+      console.log('listcategory--->', this.categoryList)
     })
     this.nationService.getListNation().subscribe(data => {
       this.listNation = data;
@@ -70,7 +70,7 @@ export class UpdateFilmComponent {
       this.status = 'Please upload Film'
       return;
     }
-    if (this.film.category== undefined){
+    if (this.film.categoryList== undefined){
       this.status = 'Please choose category'
       return;
     }
@@ -83,7 +83,7 @@ export class UpdateFilmComponent {
       this.film.avatar,
       this.film.description,
       this.film.filmLink,
-      this.film.category,
+      this.film.categoryList,
       this.film.nation
     )
 

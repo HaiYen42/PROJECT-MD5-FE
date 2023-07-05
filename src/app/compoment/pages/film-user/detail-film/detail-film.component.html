@@ -42,7 +42,14 @@
           Xem phim
         </h2>
         <div class="videoFilm" style="  display: block; margin-left: auto; margin-right: auto;">
-          <video src="{{film.filmLink}}" autoplay controls width="700" height="400"></video>
+          <video src="{{film.filmLink}}" autoplay controls width="700" height="400" (timeupdate)="onTimeUpdate($event)"></video>
+
+<!--          <video autoplay controls  width="700" height="400" (timeupdate)="onTimeUpdate($event)" class="video">-->
+<!--            <source src="{{film.filmLink}}" type="video/mp4"/>-->
+<!--            Browser not supported-->
+<!--          </video>-->
+
+<!--          <video src="{{film.filmLink}}" autoplay controls width="700" height="400"></video>-->
           <br>
           <div style="display:flex;">
             <div style="display: flex">

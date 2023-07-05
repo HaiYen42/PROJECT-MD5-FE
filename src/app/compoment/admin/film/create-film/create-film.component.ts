@@ -14,7 +14,7 @@ import {NationService} from "../../../../service/nation.service";
 })
 export class CreateFilmComponent implements OnInit {
   form: any = {};
-  listCategory: Category[] = [];
+  categoryList: Category[] = [];
   listNation: Nation[] = [];
   film?: Film;
   status = 'Form Create Film'
@@ -34,12 +34,12 @@ export class CreateFilmComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getListCategory().subscribe(data => {
-      this.listCategory = data;
-      console.log('listcategory--->', this.listCategory)
+      this.categoryList = data;
+      console.log('listcategory--->', this.categoryList)
     })
     this.nationService.getListNation().subscribe(data => {
       this.listNation = data;
-      console.log('nation--->', this.listNation)
+      // console.log('nation--->', this.listNation)
     })
 
   }
@@ -53,7 +53,8 @@ export class CreateFilmComponent implements OnInit {
   }
 
   createFilm() {
-    if (this.form.category == undefined) {
+    console.log('listCategory--->', this.form.categoryList)
+    if (this.form.categoryList == undefined) {
       this.status = 'Please select on category'
       return;
     }
@@ -74,11 +75,12 @@ export class CreateFilmComponent implements OnInit {
       this.form.avatar,
       this.form.description,
       this.form.filmLink,
-      this.form.category,
+      this.form.categoryList,
       this.form.nation,
     )
     console.log('this film--->', this.film)
     this.filmService.createFilmService(this.film).subscribe(data => {
+      console.log('data--->', data.message)
       if (data.message == 'create_success') {
         this.status = 'Create Film Success !'
       }

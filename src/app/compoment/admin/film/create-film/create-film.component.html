@@ -25,13 +25,11 @@
               <mat-error *ngIf="description.hasError('required')">The description is required!</mat-error>
             </mat-form-field>
             <br>
-            <!--       category   slect-->
+            <!--       category   select-->
             <mat-form-field appearance="outline" style="width: 350px">
               <mat-label>Category</mat-label>
-              <mat-select [(ngModel)]="form.category" name="category" [formControl]="validateCategory">
-                <mat-option *ngFor="let category of listCategory" [value]="category">
-                  {{category.name}}
-                </mat-option>
+              <mat-select [(ngModel)]="form.categoryList" name="category" [formControl]="validateCategory" multiple>
+                <mat-option *ngFor="let ctg of categoryList " [value]="ctg">  {{ctg.name}}</mat-option>
               </mat-select>
               <mat-error *ngIf="validateCategory.hasError('required')">Please select one category</mat-error>
             </mat-form-field>

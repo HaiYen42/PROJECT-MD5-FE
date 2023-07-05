@@ -23,15 +23,20 @@
             <mat-icon color="accent" matSuffix>description</mat-icon>
           </mat-form-field>
           <br>
-<!--          <mat-error class="alert alert-success" style="width: 350px; text-align: center" >Select new Category ?</mat-error>-->
-          <input placeholder="Select new Category ?" disabled> <br>
+
+          <!--       category   select-->
+<!--          <mat-error class="alert alert-success" style="width: 350px; text-align: center">Select new Category ?</mat-error>-->
+                    <input placeholder="Select new Category ?" disabled> <br>
           <mat-form-field appearance="outline" style="width: 350px">
-            <mat-label > {{film.category?.name}} </mat-label>
-            <mat-select [(ngModel)]="film.category" name="category">
-              <mat-option *ngFor="let category of listCategory" [value]="category">
-                {{category.name}}
-              </mat-option>
+            <div *ngFor = "let ctg of film.categoryList ">
+              {{ctg.name}}
+            </div>
+
+<!--            <mat-label>{{film.categoryList?.name}}</mat-label>-->
+            <mat-select [(ngModel)]="film.categoryList" name="category" multiple>
+              <mat-option *ngFor="let ctg of categoryList " [value]="ctg">  {{ctg.name}}</mat-option>
             </mat-select>
+<!--            <mat-error *ngIf="validateCategory.hasError('required')">Please select one category</mat-error>-->
           </mat-form-field>
             <br>
           <input placeholder="Select new Nation ?" disabled> <br>

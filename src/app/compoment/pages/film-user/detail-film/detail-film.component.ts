@@ -29,6 +29,7 @@ export class DetailFilmComponent implements OnInit {
   status = '';
   statusComment = '';
   newComment?: CommentDTO;
+  count = 0;
 
   constructor(private filmService: FilmService,
               private avtRoute: ActivatedRoute,
@@ -110,6 +111,22 @@ export class DetailFilmComponent implements OnInit {
   }
 
   protected readonly get = get;
+
+  onTimeUpdate($event: Event) {
+    // @ts-ignore
+    // console.log($event.target.currentTime);
+    if (this.count==0){
+      // @ts-ignore
+      if ($event.target.currentTime>3){
+          // @ts-ignore
+          this.filmService.increaseView(this.film.id).subscribe(data=>{
+            console.log('view-->', data)
+          })
+          this.count ++;
+        console.log('count--->', this.count)
+      }
+    }
+  }
 }
 
 

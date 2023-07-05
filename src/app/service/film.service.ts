@@ -47,4 +47,7 @@ export class FilmService {
     let params = {name:searchValue}
     return this.httpClient.get(this.API_FILM +'/search',{params})
   }
+  increaseView(id: number):Observable<any>{
+    return this.httpClient.get(this.API_FILM + '/view/'+ id)
+  }
 }
